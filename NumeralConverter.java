@@ -24,16 +24,17 @@ final class NumeralConverter {
   }
 
   public static String romanToArabic(String romanNumeral) {
+    romanNumeral = romanNumeral.toUpperCase();
     int arabicNumeral = 0;
 
     while (romanNumeral.length() > 0) {
-      String firstChar = romanNumeral.substring(0, 1);
       String firstPair = romanNumeral.substring(0, 2);
 
       if (romanNumerals.containsKey(firstPair)) {
         arabicNumeral += romanNumerals.get(firstPair);
         romanNumeral = romanNumeral.substring(2);
-      } else if (romanNumerals.containsKey(firstChar)) {
+      } else {
+        String firstChar = romanNumeral.substring(0, 1);
         arabicNumeral += romanNumerals.get(firstChar);
         romanNumeral = romanNumeral.substring(1);
       }
