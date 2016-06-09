@@ -29,6 +29,13 @@ final class NumeralConverter {
   }
 
   public static String arabicToRoman(int arabicNumeral) {
+    if (arabicNumeral < 1) {
+      throw new IllegalArgumentException(
+        "NumeralConverter.arabicToRoman() " +
+        "expects an Arabic Numeral with a value greater than 0"
+      );
+    }
+
     String romanNumeral = "";
 
     for (Map.Entry<String, Integer> entry : numeralMap.entrySet()) {

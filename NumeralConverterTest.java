@@ -1,8 +1,13 @@
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class NumeralConverterTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void upperCaseRomanNumeralXLIXConvertsToArabicNumeral49() {
     assertEquals("49", NumeralConverter.romanToArabic("XLIX"));
@@ -31,6 +36,12 @@ public class NumeralConverterTest {
   @Test
   public void lowerCaseRomanNumeralMMMCMXCIXConvertsToArabicNumeral3999() {
     assertEquals("3999", NumeralConverter.romanToArabic("mmmcmxcix"));
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedArabicNumeral0() {
+    thrown.expect(IllegalArgumentException.class);
+    NumeralConverter.arabicToRoman("0");
   }
 
   @Test
