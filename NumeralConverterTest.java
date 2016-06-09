@@ -9,6 +9,11 @@ public class NumeralConverterTest {
   }
 
   @Test
+  public void lowerCaseRomanNumeralMCMLXXIXConvertsToArabicNumeral1979() {
+    assertEquals("1979", NumeralConverter.romanToArabic("mcmlxxix"));
+  }
+
+  @Test
   public void upperCaseRomanNumeralMMMCMXCIXConvertsToArabicNumeral3999() {
     assertEquals("3999", NumeralConverter.romanToArabic("MMMCMXCIX"));
   }
