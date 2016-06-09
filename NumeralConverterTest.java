@@ -4,6 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 public class NumeralConverterTest {
   @Test
+  public void upperCaseRomanNumeralXLIXConvertsToArabicNumeral49() {
+    assertEquals("49", NumeralConverter.romanToArabic("XLIX"));
+  }
+
+  @Test
   public void upperCaseRomanNumeralMCMLXXIXConvertsToArabicNumeral1979() {
     assertEquals("1979", NumeralConverter.romanToArabic("MCMLXXIX"));
   }
