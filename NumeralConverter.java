@@ -1,26 +1,47 @@
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 final class NumeralConverter {
   private NumeralConverter() {}
 
-  private final static LinkedHashMap<String, Integer> romanNumerals;
+  private final static LinkedHashMap<String, Integer> numeralMap;
 
   static {
-    romanNumerals = new LinkedHashMap<>();
+    numeralMap = new LinkedHashMap<>();
 
-    romanNumerals.put("M", 1000);
-    romanNumerals.put("CM", 900);
-    romanNumerals.put("D",  500);
-    romanNumerals.put("CD", 400);
-    romanNumerals.put("C",  100);
-    romanNumerals.put("XC",  90);
-    romanNumerals.put("L",   50);
-    romanNumerals.put("XL",  40);
-    romanNumerals.put("X",   10);
-    romanNumerals.put("IX",   9);
-    romanNumerals.put("V",    5);
-    romanNumerals.put("IV",   4);
-    romanNumerals.put("I",    1);
+    numeralMap.put("M", 1000);
+    numeralMap.put("CM", 900);
+    numeralMap.put("D",  500);
+    numeralMap.put("CD", 400);
+    numeralMap.put("C",  100);
+    numeralMap.put("XC",  90);
+    numeralMap.put("L",   50);
+    numeralMap.put("XL",  40);
+    numeralMap.put("X",   10);
+    numeralMap.put("IX",   9);
+    numeralMap.put("V",    5);
+    numeralMap.put("IV",   4);
+    numeralMap.put("I",    1);
+  }
+
+  public static String arabicToRoman(String arabicNumeral) {
+    return arabicToRoman(Integer.parseInt(arabicNumeral));
+  }
+
+  public static String arabicToRoman(int arabicNumeral) {
+    String romanNumeral = "";
+
+    for (Map.Entry<String, Integer> entry : numeralMap.entrySet()) {
+      String key = entry.getKey();
+      Integer value = entry.getValue();
+
+      while (arabicNumeral / value >= 1) {
+        romanNumeral += key;
+        arabicNumeral -= value;
+      }
+    }
+
+    return romanNumeral;
   }
 
   public static String romanToArabic(String romanNumeral) {
@@ -30,12 +51,12 @@ final class NumeralConverter {
     while (romanNumeral.length() > 0) {
       String firstPair = romanNumeral.substring(0, 2);
 
-      if (romanNumerals.containsKey(firstPair)) {
-        arabicNumeral += romanNumerals.get(firstPair);
+      if (numeralMap.containsKey(firstPair)) {
+        arabicNumeral += numeralMap.get(firstPair);
         romanNumeral = romanNumeral.substring(2);
       } else {
         String firstChar = romanNumeral.substring(0, 1);
-        arabicNumeral += romanNumerals.get(firstChar);
+        arabicNumeral += numeralMap.get(firstChar);
         romanNumeral = romanNumeral.substring(1);
       }
     }
