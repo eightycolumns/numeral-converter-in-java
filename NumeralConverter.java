@@ -29,10 +29,10 @@ final class NumeralConverter {
   }
 
   public static String arabicToRoman(int arabicNumeral) {
-    if (arabicNumeral < 1) {
+    if (arabicNumeral < 1 || arabicNumeral > 3999) {
       throw new IllegalArgumentException(
-        "NumeralConverter.arabicToRoman() " +
-        "expects an Arabic Numeral with a value greater than 0"
+        "NumeralConverter.arabicToRoman() expects an Arabic numeral " +
+        "with a value greater than 0 and less than 4000."
       );
     }
 

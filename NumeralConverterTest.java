@@ -45,6 +45,12 @@ public class NumeralConverterTest {
   }
 
   @Test
+  public void numeralConverterThrowsExceptionWhenPassedArabicNumeral4000() {
+    thrown.expect(IllegalArgumentException.class);
+    NumeralConverter.arabicToRoman("4000");
+  }
+
+  @Test
   public void arabicNumeral49ConvertsToRomanNumeralXLIX() {
     assertEquals("XLIX", NumeralConverter.arabicToRoman("49"));
   }
