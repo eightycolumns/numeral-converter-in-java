@@ -42,4 +42,9 @@ public class NumeralConverterTest {
   public void arabicNumeral1979ConvertsToRomanNumeralMCMLXXIX() {
     assertEquals("MCMLXXIX", NumeralConverter.arabicToRoman("1979"));
   }
+
+  @Test
+  public void arabicNumeral3999ConvertsToRomanNumeralMMMCMXCIX() {
+    assertEquals("MMMCMXCIX", NumeralConverter.arabicToRoman("3999"));
+  }
 }
