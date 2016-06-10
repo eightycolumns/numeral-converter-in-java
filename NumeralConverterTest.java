@@ -20,6 +20,83 @@ public class NumeralConverterTest {
   }
 
   @Test
+  public void numeralConverterThrowsExceptionWhenPassedMMMM() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("MMMM");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedDD() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("DD");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedCCCC() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("CCCC");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedLL() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("LL");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedXXXX() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("XXXX");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedVV() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("VV");
+  }
+
+  @Test
+  public void numeralConverterThrowsExceptionWhenPassedIIII() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("IIII");
+  }
+
+  @Test
   public void upperCaseRomanNumeralXLIXConvertsToArabicNumeral49() {
     assertEquals("49", NumeralConverter.romanToArabic("XLIX"));
   }
