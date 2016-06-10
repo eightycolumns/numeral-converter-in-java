@@ -34,8 +34,8 @@ final class NumeralConverter {
     return arabicToRoman(Integer.parseInt(arabicNumeral));
   }
 
-  private static boolean isArabicNumeral(String arabicNumeral) {
-    return arabicNumeral.matches("^0|[1-9]\\d*$");
+  private static boolean isArabicNumeral(String string) {
+    return string.matches("^0|[1-9]\\d*$");
   }
 
   public static String arabicToRoman(int arabicNumeral) {
@@ -66,6 +66,12 @@ final class NumeralConverter {
   }
 
   public static String romanToArabic(String romanNumeral) {
+    if (!isRomanNumeral(romanNumeral)) {
+      throw new IllegalArgumentException(
+        "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+      );
+    }
+
     romanNumeral = romanNumeral.toUpperCase();
     int arabicNumeral = 0;
 
@@ -83,5 +89,18 @@ final class NumeralConverter {
     }
 
     return Integer.toString(arabicNumeral);
+  }
+
+  private static boolean isRomanNumeral(String string) {
+    String romanNumeral =
+      "(?i)" +               // Case-insensitive
+      "^(?=.)" +             // Don't match empty string
+      "M{0,3}" +             // Thousands
+      "(?:D?C{0,3}|CM|CD)" + // Hundreds
+      "(?:L?X{0,3}|XC|XL)" + // Tens
+      "(?:V?I{0,3}|IX|IV)$"  // Ones
+    ;
+
+    return string.matches(romanNumeral);
   }
 }

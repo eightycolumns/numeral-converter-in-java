@@ -9,6 +9,17 @@ public class NumeralConverterTest {
   public ExpectedException thrown = ExpectedException.none();
 
   @Test
+  public void numeralConverterThrowsExceptionWhenPassedIVXLCDM() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("IVXLCDM");
+  }
+
+  @Test
   public void upperCaseRomanNumeralXLIXConvertsToArabicNumeral49() {
     assertEquals("49", NumeralConverter.romanToArabic("XLIX"));
   }
