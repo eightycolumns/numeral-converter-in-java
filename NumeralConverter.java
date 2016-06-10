@@ -25,11 +25,21 @@ final class NumeralConverter {
   }
 
   public static String arabicToRoman(String arabicNumeral) {
+    if (!isArabicNumeral(arabicNumeral)) {
+      throw new IllegalArgumentException(
+        "NumeralConverter.arabicToRoman() expects a valid Arabic numeral."
+      );
+    }
+
     return arabicToRoman(Integer.parseInt(arabicNumeral));
   }
 
+  private static boolean isArabicNumeral(String arabicNumeral) {
+    return arabicNumeral.matches("^0|[1-9]\\d*$");
+  }
+
   public static String arabicToRoman(int arabicNumeral) {
-    if (arabicNumeral < 1 || arabicNumeral > 3999) {
+    if (!isInRange(arabicNumeral)) {
       throw new IllegalArgumentException(
         "NumeralConverter.arabicToRoman() expects an Arabic numeral " +
         "with a value greater than 0 and less than 4000."
@@ -49,6 +59,10 @@ final class NumeralConverter {
     }
 
     return romanNumeral;
+  }
+
+  private static boolean isInRange(int arabicNumeral) {
+    return arabicNumeral > 0 && arabicNumeral < 4000;
   }
 
   public static String romanToArabic(String romanNumeral) {

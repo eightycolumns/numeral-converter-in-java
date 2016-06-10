@@ -39,14 +39,37 @@ public class NumeralConverterTest {
   }
 
   @Test
+  public void numeralConverterThrowsExceptionWhenPassedInvalidArabicNumeral() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.arabicToRoman() expects a valid Arabic numeral."
+    );
+
+    NumeralConverter.arabicToRoman("Invalid Arabic Numeral");
+  }
+
+  @Test
   public void numeralConverterThrowsExceptionWhenPassedArabicNumeral0() {
     thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.arabicToRoman() expects an Arabic numeral " +
+      "with a value greater than 0 and less than 4000."
+    );
+
     NumeralConverter.arabicToRoman("0");
   }
 
   @Test
   public void numeralConverterThrowsExceptionWhenPassedArabicNumeral4000() {
     thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.arabicToRoman() expects an Arabic numeral " +
+      "with a value greater than 0 and less than 4000."
+    );
+
     NumeralConverter.arabicToRoman("4000");
   }
 
