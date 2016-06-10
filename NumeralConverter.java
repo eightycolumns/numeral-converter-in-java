@@ -101,6 +101,8 @@ final class NumeralConverter {
       "(?:V?I{0,3}|IX|IV)$"  // Ones
     ;
 
-    return string.matches(romanNumeral);
+    String uniformCase = "^[^A-Z]*|[^a-z]*$";
+
+    return string.matches(romanNumeral) && string.matches(uniformCase);
   }
 }

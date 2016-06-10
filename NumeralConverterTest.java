@@ -20,7 +20,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedIVXLCDM() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedIVXLCDM() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -31,7 +31,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedMMMM() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedMMMM() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -42,7 +42,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedDD() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedDD() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -53,7 +53,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedCCCC() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedCCCC() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -64,7 +64,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedLL() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedLL() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -75,7 +75,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedXXXX() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedXXXX() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -86,7 +86,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedVV() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedVV() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -97,7 +97,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedIIII() {
+  public void romanToArabicConverterThrowsExceptionWhenPassedIIII() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -105,6 +105,17 @@ public class NumeralConverterTest {
     );
 
     NumeralConverter.romanToArabic("IIII");
+  }
+
+  @Test
+  public void romanToArabicConverterThrowsExceptionWhenPassedMixedCase() {
+    thrown.expect(IllegalArgumentException.class);
+
+    thrown.expectMessage(
+      "NumeralConverter.romanToArabic() expects a valid Roman numeral."
+    );
+
+    NumeralConverter.romanToArabic("MmMcCcXxXiIi");
   }
 
   @Test
@@ -149,18 +160,18 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedInvalidArabicNumeral() {
+  public void arabicToRomanConverterThrowsExceptionWhenPassedAnInvalidString() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
       "NumeralConverter.arabicToRoman() expects a valid Arabic numeral."
     );
 
-    NumeralConverter.arabicToRoman("Invalid Arabic Numeral");
+    NumeralConverter.arabicToRoman("An Invalid String");
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedArabicNumeral0() {
+  public void arabicToRomanConverterThrowsExceptionWhenPassed0() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
@@ -172,7 +183,7 @@ public class NumeralConverterTest {
   }
 
   @Test
-  public void numeralConverterThrowsExceptionWhenPassedArabicNumeral4000() {
+  public void arabicToRomanConverterThrowsExceptionWhenPassed4000() {
     thrown.expect(IllegalArgumentException.class);
 
     thrown.expectMessage(
